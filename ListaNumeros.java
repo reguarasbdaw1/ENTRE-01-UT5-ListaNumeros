@@ -1,12 +1,13 @@
-
+import java.util.Arrays;
+import java.util.Arrays;
+import java.util.Arrays;
 /**
  * La clase encapsula en un array
  * una lista de numeros
  * 
- * @author - 
+ * @author - Richard Eguaras
  * 
  */
-import java.util.Arrays;
 
 public class ListaNumeros 
 {
@@ -26,6 +27,10 @@ public class ListaNumeros
         if (n > TAM_LISTA) {
             throw new IllegalArgumentException("Valor no permitido para tamaño lista");
         }
+        else {
+            numeros = new int[n];
+        }
+        pos = 0;
         // completar
     }
 
@@ -39,6 +44,8 @@ public class ListaNumeros
     public boolean addElemento(int numero)
     {
         
+        numeros[numeros.length]=numero;
+        
         return true;
 
     }
@@ -48,7 +55,8 @@ public class ListaNumeros
      */
     public boolean estaCompleta()
     {
-        return true;
+        
+        return  pos == numeros.length;
 
     }
 
@@ -57,7 +65,9 @@ public class ListaNumeros
      */
     public boolean estaVacia() 
     {
-        return true;
+       
+        return pos==0;
+        
 
     }
 
@@ -66,7 +76,7 @@ public class ListaNumeros
      */
     public int getTotalNumeros()
     {
-        return 0;
+        return pos-1;
 
     }
 
@@ -75,7 +85,10 @@ public class ListaNumeros
      */
     public void vaciarLista() 
     {
-        
+        for(int i = 0; i < numeros.length; i++)
+        {
+            numeros[i] = 0;
+        }
     }
 
     /**
@@ -84,7 +97,13 @@ public class ListaNumeros
      */
     public boolean estaElemento(int numero) 
     {
-        
+        for(int i = 0; i < numeros.length; i++)
+        {
+            if (numeros[i] == numero)
+            {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -97,8 +116,12 @@ public class ListaNumeros
      */
     public String toString() 
     {
-        
-        return null;
+        String str = "";
+        for(int i = 0; i < numeros.length; i++)
+        {
+            str = "" + numeros[i];
+        }
+        return str;
     }
 
     /**
