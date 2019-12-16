@@ -43,13 +43,18 @@ public class ListaNumeros
      */
     public boolean addElemento(int numero)
     {
-        
-        numeros[numeros.length]=numero;
-        
-        return true;
-
+     for(int i = 0; i < numeros.length; i++)
+     {
+       if (numero == numeros[i] || estaCompleta())
+       {
+            return false;
+       }
+       
+     }
+     numeros[pos]= numero;
+     pos++;       
+     return true;
     }
-
     /**
      * devuelve true si numeros está completo, false en otro caso Hazlo sin if
      */
@@ -145,11 +150,32 @@ public class ListaNumeros
      * (ver detalles en el enunciado)
      */
     public int[] expandir() {
-         
-
-        return null;
-    }
-
+     int elementos = 0;  
+         for (int i = 0; i < numeros.length; i++)
+         {
+         if (!esImpar(i)){
+            
+            elementos = elementos += numeros[i];
+         }    
+     }
+     int[] expandido = new int[elementos];
+    
+     for (int i = 0; i < numeros.length; i++)
+     {
+        if (!esImpar(i))
+        {
+         int siguientevalor = numeros[i+1];
+         for(int a = 1; a < numeros[i]; a++)
+         {
+             int contador = 0;
+             expandido[contador] = siguientevalor;
+             contador++;
+         }
+        }
+        
+     }
+     return expandido;
+   }
     /**
      * @param valor el nº a analizar
      * @return true si valor es impar, false en otro caso
