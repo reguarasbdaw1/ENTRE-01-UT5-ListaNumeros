@@ -207,9 +207,16 @@ public class ListaNumeros
      *  que incluya los elementos del array ordenado
      */
     public ListaNumeros nuevaLista() {
-         
-        return null;
-
+        int[] copia = Arrays.copyOf(numeros, numeros.length);        
+        Arrays.sort(copia);
+        
+        // ListaNumeros nueva = new nueva[TAM_LISTA];
+        new ListaNumeros(9);
+        for(int i = 0; i < numeros.length; i++)
+        {
+            
+            ListaNumeros[i] = copia[i];
+        }
     }
 
     /**
