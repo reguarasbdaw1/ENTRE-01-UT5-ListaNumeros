@@ -193,8 +193,21 @@ public class ListaNumeros
      *  Si numeros = {3, 7, 4, 9, 2, 5, 8, 11, 13} 
      *  después de reorganizarParesImpares() quedaría {4, 2, 8, 3, 7, 9, 5, 11, 13}
      */
-    public void reorganizarParesImpares() {
-         
+    public void reorganizarParesImpares() 
+    {
+     int impar = 0;
+     int posPar = 0;
+        for(int i = 0; i < numeros.length; i++)
+        {
+            if (!esImpar(numeros[i]) )
+            {
+                impar = numeros[posPar];
+                numeros[posPar] = numeros[i];
+                impar = numeros[i];
+                posPar++;
+            }
+            
+        }
 
     }
 
@@ -210,13 +223,14 @@ public class ListaNumeros
         int[] copia = Arrays.copyOf(numeros, numeros.length);        
         Arrays.sort(copia);
         
-        // ListaNumeros nueva = new nueva[TAM_LISTA];
-        new ListaNumeros(9);
+        ListaNumeros nueva = new ListaNumeros(copia.length);
+        
         for(int i = 0; i < numeros.length; i++)
         {
             
-            ListaNumeros[i] = copia[i];
+            nueva.addElemento(copia[i]);
         }
+        return nueva;
     }
 
     /**
