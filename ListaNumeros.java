@@ -43,24 +43,25 @@ public class ListaNumeros
      */
     public boolean addElemento(int numero)
     {
-     for(int i = 0; i < numeros.length; i++)
-     {
-       if (numero == numeros[i] || estaCompleta())
-       {
-            return false;
-       }
-       
-     }
-     numeros[pos]= numero;
-     pos++;       
-     return true;
+        for(int i = 0; i < numeros.length; i++)
+        {
+            if (numero == numeros[i] || estaCompleta())
+            {
+                return false;
+            }
+
+        }
+        numeros[pos]= numero;
+        pos++;       
+        return true;
     }
+
     /**
      * devuelve true si numeros está completo, false en otro caso Hazlo sin if
      */
     public boolean estaCompleta()
     {
-        
+
         return  pos == numeros.length;
 
     }
@@ -70,12 +71,10 @@ public class ListaNumeros
      */
     public boolean estaVacia() 
     {
-       
+
         return pos==0;
-        
 
     }
-
     /**
      * devuelve el nº de elementos realmente guardados en la lista
      */
@@ -150,32 +149,33 @@ public class ListaNumeros
      * (ver detalles en el enunciado)
      */
     public int[] expandir() {
-     int elementos = 0;  
-         for (int i = 0; i < numeros.length; i++)
-         {
-         if (!esImpar(i)){
-            
-            elementos = elementos += numeros[i];
-         }    
-     }
-     int[] expandido = new int[elementos];
-    
-     for (int i = 0; i < numeros.length; i++)
-     {
-        if (!esImpar(i))
+        int elementos = 0;  
+        for (int i = 0; i < numeros.length; i++)
         {
-         int siguientevalor = numeros[i+1];
-         for(int a = 1; a < numeros[i]; a++)
-         {
-             int contador = 0;
-             expandido[contador] = siguientevalor;
-             contador++;
-         }
+            if (!esImpar(i)){
+
+                elementos = elementos += numeros[i];
+            }    
         }
-        
-     }
-     return expandido;
-   }
+        int[] expandido = new int[elementos];
+
+        for (int i = 0; i < numeros.length; i++)
+        {
+            if (!esImpar(i))
+            {
+                int siguientevalor = numeros[i+1];
+                for(int a = 1; a < numeros[i]; a++)
+                {
+                    int contador = 0;
+                    expandido[contador] = siguientevalor;
+                    contador++;
+                }
+            }
+
+        }
+        return expandido;
+    }
+
     /**
      * @param valor el nº a analizar
      * @return true si valor es impar, false en otro caso
@@ -195,8 +195,8 @@ public class ListaNumeros
      */
     public void reorganizarParesImpares() 
     {
-     int impar = 0;
-     int posPar = 0;
+        int impar = 0;
+        int posPar = 0;
         for(int i = 0; i < numeros.length; i++)
         {
             if (!esImpar(numeros[i]) )
@@ -206,12 +206,11 @@ public class ListaNumeros
                 impar = numeros[i];
                 posPar++;
             }
-            
+
         }
 
     }
 
-     
     /**
      *  Usando métodos de la clase Arrays haz una copia 
      *  de numeros al tamaño indicado por su longitud lógica
@@ -222,12 +221,12 @@ public class ListaNumeros
     public ListaNumeros nuevaLista() {
         int[] copia = Arrays.copyOf(numeros, numeros.length);        
         Arrays.sort(copia);
-        
+
         ListaNumeros nueva = new ListaNumeros(copia.length);
-        
+
         for(int i = 0; i < numeros.length; i++)
         {
-            
+
             nueva.addElemento(copia[i]);
         }
         return nueva;
@@ -246,8 +245,16 @@ public class ListaNumeros
      */
     public int[][] toArray2D() 
     {
-        
-        return null;
+        int[][] matriz;
+        matriz = new int[4][4];
+        for (int fila = 0; fila < matriz.length; fila++)
+        {
+            for (int columna = 0; columna < matriz[fila].length; columna++)
+            {
+                matriz[fila][columna] = numeros[fila];
+            }
+        }
+        return matriz;
     }
 
     /**
@@ -270,8 +277,7 @@ public class ListaNumeros
         int[] expandido = numeros.expandir();
         System.out.println("Expandido: " + Arrays.toString(expandido));
         // seguir completando
-        
-        
+
         
     }
 }
